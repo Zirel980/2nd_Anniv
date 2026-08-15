@@ -20,21 +20,18 @@ const memories = [
 
         image: "assets/memory1.jpg",
 
-        clue: "What was the first place where we spent time together?",
+        clue: "What Roblox game did you send to me; that started everything?",
 
-        answer: "school",
+        answer: "Dress to Impress",
 
         letter: `
-Do you remember this day?
+Natatandaan mo ba yon?
 
-This is one of the memories that I never want
-to forget.
+Nagsend ka sa akin ng dress to impress na meme dahil
+sa cosplay ko kay Apollo hehehe. That started the best chapter
+of my life. I love you so much baby and thank you DTI!!
 
-Sometimes I look back at this picture and realize
-how much has happened since then.
-
-If I could go back to this moment,
-I'd still choose to experience it all over again.
+charot! :P
 `
     },
 
@@ -44,23 +41,23 @@ I'd still choose to experience it all over again.
 
         unlockDate: new Date("2026-08-15T00:00:00+08:00"),
 
-        title: "One of My Favorites",
+        title: "Our First Date",
 
         image: "assets/memory2.jpg",
 
-        clue: "What food did we eat on one of our favorite dates?",
+        clue: "What food did we eat on our very first date at RobGal?",
 
-        answer: "pizza",
+        answer: "Bonchon",
 
         letter: `
-Out of all the memories we've made,
-this one will always have a special place
-in my heart.
+    Natatandaan ko pa tong araw na to like it was yesterday.
+    After watching a movie, kumain tayo sa Bonchon hehe. 
+    We ate chimken and mandu.
+    Tapos after non nakita natin si Ninang Juvy kasama mga pinsan ko hehe.
+    Kaya nalaman agad nila ehh, nyarkie!!!
 
-It wasn't necessarily a perfect day.
-
-It was simply a day where I was happy
-because I was with you.
+    Pero, this was one of the best moments of my life. Thank you my baby girl
+    I love you!!
 `
     },
 
@@ -70,23 +67,24 @@ because I was with you.
 
         unlockDate: new Date("2026-08-16T00:00:00+08:00"),
 
-        title: "A Day to Remember",
+        title: "Movie Night!",
 
         image: "assets/memory3.jpg",
 
         clue: "What was the first movie we watched together?",
 
-        answer: "your movie",
+        answer: "Inside Out 2",
 
         letter: `
-Another memory.
+First movie natin yung nakaka iyakk paa, charr!
 
-Another little chapter of our story.
+I love watching movies with you kasi ang cute 
+ng reactions mo sa mga happenings don hehehe.
+Kahit online man yan, I really enjoyed it and
+naging Core memory talaga yan sa akin kasi
+I felt Joy then Sadness nung tapos na yung movie. 
 
-Looking at this reminds me of how many
-little moments we've collected together.
-
-And somehow, I want many more.
+Nyehehehe. I love you bub bub!! More movies to come!!
 `
     },
 
@@ -100,20 +98,26 @@ And somehow, I want many more.
 
         image: "assets/memory4.jpg",
 
-        clue: "What nickname do I usually call you?",
+        clue: "Who is our first Plush Baby?",
 
-        answer: "baby",
+        answer: "Andrelia",
 
         letter: `
-We've changed a lot.
+Grabe bub malapit na tayo mag 2 years! 
+2 Years palang marami na tayong anak!
+Anak na plushies hehehe. 
 
-We've grown.
+I love you so much my bub, I just want you to know
+that I'm always here for you and magkasama tayo
+sa lahat ng happenings alright bub? 
 
-We've learned.
+Kaya don't hesitate to talk to me my bubu.
+Remember, I'm your baby Zi owkii?
 
-And through all of it,
-I'm grateful that I got to experience
-another chapter with you.
+I mwabie you soooo much, aalagaan and mamahalin kita
+araw araw, gabi gabi, at for is ever!!!!
+
+NYARKIEEEEEEEE!!!!!!!
 `
     },
 
@@ -127,21 +131,26 @@ another chapter with you.
 
         image: "assets/memory5.jpg",
 
-        clue: "What is the date we officially became a couple?",
+        clue: "Add the day and the year of our anniversary, then find it's square root and multiply by 1.4825",
 
-        answer: "august 19 2024",
+        answer: "67",
 
         letter: `
-One more day.
+67!!!!!
 
-After all the memories,
-all the laughs,
-all the conversations,
-and all the little moments...
+Wala na ko maisip eh kaya 67 nalangz. Nyark!!
 
-we made it here.
+Grabe isang araw nalang, 2 years na tayo! 
 
-Tomorrow is our day.
+I knew from the first day we met that something
+special would happen nyehehehe.
+
+I love you so much babes! I hope you're ready for 
+what's coming tomorrow MWAHAHAHAHA!!!! 
+
+I love you, pookie! See you tomorrow!
+
+Lovesz Ziiiii! <3
 `
     }
 
