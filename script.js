@@ -1,22 +1,13 @@
-/* =========================================
-   ANNIVERSARY SETTINGS
-========================================= */
+// ========================================
+// ANNIVERSARY SETTINGS
+// ========================================
 
-// Your second anniversary
 const anniversaryDate = new Date("2026-08-19T00:00:00+08:00");
 
 
-/*
-    Each memory unlocks at midnight.
-
-    Memory 1 → August 14
-    Memory 2 → August 15
-    Memory 3 → August 16
-    Memory 4 → August 17
-    Memory 5 → August 18
-
-    Final → August 19
-*/
+// ========================================
+// MEMORY DATA
+// ========================================
 
 const memories = [
 
@@ -29,8 +20,11 @@ const memories = [
 
         image: "assets/memory1.jpg",
 
-        letter: `
+        clue: "What was the first place where we spent time together?",
 
+        answer: "school",
+
+        letter: `
 Do you remember this day?
 
 This is one of the memories that I never want
@@ -41,8 +35,7 @@ how much has happened since then.
 
 If I could go back to this moment,
 I'd still choose to experience it all over again.
-
-        `
+`
     },
 
 
@@ -55,8 +48,11 @@ I'd still choose to experience it all over again.
 
         image: "assets/memory2.jpg",
 
-        letter: `
+        clue: "What food did we eat on one of our favorite dates?",
 
+        answer: "pizza",
+
+        letter: `
 Out of all the memories we've made,
 this one will always have a special place
 in my heart.
@@ -65,8 +61,7 @@ It wasn't necessarily a perfect day.
 
 It was simply a day where I was happy
 because I was with you.
-
-        `
+`
     },
 
 
@@ -79,8 +74,11 @@ because I was with you.
 
         image: "assets/memory3.jpg",
 
-        letter: `
+        clue: "What was the first movie we watched together?",
 
+        answer: "your movie",
+
+        letter: `
 Another memory.
 
 Another little chapter of our story.
@@ -89,8 +87,7 @@ Looking at this reminds me of how many
 little moments we've collected together.
 
 And somehow, I want many more.
-
-        `
+`
     },
 
 
@@ -103,8 +100,11 @@ And somehow, I want many more.
 
         image: "assets/memory4.jpg",
 
-        letter: `
+        clue: "What nickname do I usually call you?",
 
+        answer: "baby",
+
+        letter: `
 We've changed a lot.
 
 We've grown.
@@ -114,8 +114,7 @@ We've learned.
 And through all of it,
 I'm grateful that I got to experience
 another chapter with you.
-
-        `
+`
     },
 
 
@@ -128,8 +127,11 @@ another chapter with you.
 
         image: "assets/memory5.jpg",
 
-        letter: `
+        clue: "What is the date we officially became a couple?",
 
+        answer: "august 19 2024",
+
+        letter: `
 One more day.
 
 After all the memories,
@@ -140,25 +142,24 @@ and all the little moments...
 we made it here.
 
 Tomorrow is our day.
-
-        `
+`
     }
 
 ];
 
 
-/* =========================================
-   COUNTDOWN
-========================================= */
+// ========================================
+// COUNTDOWN
+// ========================================
 
 function updateCountdown() {
 
     const now = new Date();
 
-    const difference = anniversaryDate - now;
+    const difference =
+        anniversaryDate.getTime() - now.getTime();
 
 
-    // Anniversary has arrived
     if (difference <= 0) {
 
         document.getElementById("days").textContent = "00";
@@ -169,10 +170,7 @@ function updateCountdown() {
         document.querySelector(".countdown-title").textContent =
             "HAPPY SECOND ANNIVERSARY ❤️";
 
-        unlockAll();
-
         return;
-
     }
 
 
@@ -204,18 +202,17 @@ function updateCountdown() {
 
     document.getElementById("seconds").textContent =
         String(seconds).padStart(2, "0");
-
 }
 
 
-setInterval(updateCountdown, 1000);
-
 updateCountdown();
 
+setInterval(updateCountdown, 1000);
 
-/* =========================================
-   MEMORY LOCK SYSTEM
-========================================= */
+
+// ========================================
+// MEMORY LOCKS
+// ========================================
 
 function updateMemoryLocks() {
 
@@ -248,7 +245,7 @@ function updateMemoryLocks() {
             lockIcon.textContent = "🔓";
 
             unlockText.textContent =
-                "MEMORY UNLOCKED";
+                "MEMORY AVAILABLE";
 
             button.disabled = false;
 
@@ -274,187 +271,269 @@ function updateMemoryLocks() {
 }
 
 
-setInterval(updateMemoryLocks, 1000);
-
 updateMemoryLocks();
 
+setInterval(updateMemoryLocks, 1000);
 
-/* =========================================
-   OPEN MEMORY
-========================================= */
 
-const modal =
+// ========================================
+// PASSWORD / CLUE MODAL
+// ========================================
+
+const passwordModal =
     document.getElementById("memoryModal");
 
-const modalNumber =
-    document.getElementById("modalNumber");
 
-const modalTitle =
-    document.getElementById("modalTitle");
+// Create the password interface
+function createPasswordInterface(memory) {
 
-const modalImage =
-    document.getElementById("modalImage");
-
-const modalLetter =
-    document.getElementById("modalLetter");
+    const modalContent =
+        document.querySelector("#memoryModal .modal-content");
 
 
-document.querySelectorAll(".memory-card")
-.forEach((card, index) => {
+    modalContent.innerHTML = `
 
-    const button =
-        card.querySelector(".open-button");
+        <button class="close-button" id="closePassword">
+            ×
+        </button>
 
+        <div class="modal-number">
+            MEMORY ${String(memory.id).padStart(2, "0")}
+        </div>
 
-    button.addEventListener("click", () => {
+        <h2>
+            ${memory.title}
+        </h2>
 
-        if (card.classList.contains("locked")) {
+        <div class="password-lock">
+            🔐
+        </div>
 
-            return;
+        <p class="password-intro">
+            This memory is protected.
+            <br>
+            Answer the question to unlock it.
+        </p>
 
-        }
+        <div class="clue-box">
 
+            <span>YOUR CLUE</span>
 
-        const memory = memories[index];
+            <p>
+                ${memory.clue}
+            </p>
 
+        </div>
 
-        modalNumber.textContent =
-            `MEMORY ${String(memory.id).padStart(2, "0")}`;
+        <input
+            type="text"
+            id="passwordInput"
+            class="password-input"
+            placeholder="Enter your answer..."
+            autocomplete="off"
+        >
 
-        modalTitle.textContent =
-            memory.title;
+        <button
+            id="unlockButton"
+            class="unlock-button"
+        >
+            UNLOCK MEMORY
+        </button>
 
-        modalImage.src =
-            memory.image;
+        <p
+            id="wrongAnswer"
+            class="wrong-answer"
+        ></p>
 
-        modalLetter.textContent =
-            memory.letter;
-
-
-        modal.classList.add("active");
-
-        document.body.style.overflow = "hidden";
-
-    });
-
-});
-
-
-/* =========================================
-   CLOSE MEMORY
-========================================= */
-
-document.getElementById("closeModal")
-.addEventListener("click", closeMemory);
-
-
-modal.addEventListener("click", (event) => {
-
-    if (
-        event.target.classList.contains("modal-background")
-    ) {
-
-        closeMemory();
-
-    }
-
-});
+    `;
 
 
-function closeMemory() {
+    document.body.style.overflow = "hidden";
 
-    modal.classList.remove("active");
+    passwordModal.classList.add("active");
 
-    document.body.style.overflow = "";
+
+    document
+        .getElementById("closePassword")
+        .addEventListener("click", closePasswordModal);
+
+
+    document
+        .getElementById("unlockButton")
+        .addEventListener("click", () => {
+
+            checkAnswer(memory);
+
+        });
+
+
+    document
+        .getElementById("passwordInput")
+        .addEventListener("keydown", (event) => {
+
+            if (event.key === "Enter") {
+
+                checkAnswer(memory);
+
+            }
+
+        });
 
 }
 
 
-/* =========================================
-   FINAL ANNIVERSARY
-========================================= */
+// ========================================
+// CHECK ANSWER
+// ========================================
 
-const finalButton =
-    document.getElementById("finalButton");
+function checkAnswer(memory) {
 
-const finalModal =
-    document.getElementById("finalModal");
+    const input =
+        document.getElementById("passwordInput");
+
+    const wrongAnswer =
+        document.getElementById("wrongAnswer");
 
 
-finalButton.addEventListener("click", () => {
+    const userAnswer =
+        input.value
+            .trim()
+            .toLowerCase();
 
-    const now = new Date();
 
-    if (now >= anniversaryDate) {
+    const correctAnswer =
+        memory.answer
+            .trim()
+            .toLowerCase();
 
-        finalModal.classList.add("active");
 
-        document.body.style.overflow = "hidden";
+    if (userAnswer === correctAnswer) {
+
+        showMemory(memory);
 
     }
 
     else {
 
-        alert(
-            "Not yet... ❤️ Come back on August 19."
-        );
+        wrongAnswer.textContent =
+            "Not quite... Think about it again. ❤️";
+
+        input.classList.add("wrong");
+
+
+        setTimeout(() => {
+
+            input.classList.remove("wrong");
+
+        }, 500);
 
     }
 
-});
+}
 
 
-/* =========================================
-   CLOSE FINAL
-========================================= */
+// ========================================
+// SHOW MEMORY
+// ========================================
 
-document.getElementById("closeFinal")
-.addEventListener("click", () => {
+function showMemory(memory) {
 
-    finalModal.classList.remove("active");
+    const modalContent =
+        document.querySelector("#memoryModal .modal-content");
+
+
+    modalContent.innerHTML = `
+
+        <button
+            class="close-button"
+            id="closeMemory"
+        >
+            ×
+        </button>
+
+        <div class="modal-number">
+            MEMORY ${String(memory.id).padStart(2, "0")}
+        </div>
+
+        <div class="success-symbol">
+            🔓
+        </div>
+
+        <h2>
+            ${memory.title}
+        </h2>
+
+        <img
+            src="${memory.image}"
+            alt="Our memory"
+        >
+
+        <div class="letter">
+
+            <div class="letter-line"></div>
+
+            <p>
+                ${memory.letter}
+            </p>
+
+            <div class="letter-signature">
+                — With love ❤️
+            </div>
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById("closeMemory")
+        .addEventListener("click", closePasswordModal);
+
+}
+
+
+// ========================================
+// CLOSE MODAL
+// ========================================
+
+function closePasswordModal() {
+
+    passwordModal.classList.remove("active");
 
     document.body.style.overflow = "";
 
-});
+}
 
 
-finalModal.addEventListener("click", (event) => {
+// ========================================
+// OPEN MEMORY BUTTONS
+// ========================================
 
-    if (
-        event.target.classList.contains("modal-background")
-    ) {
+document
+    .querySelectorAll(".memory-card")
+    .forEach((card, index) => {
 
-        finalModal.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-    }
-
-});
+        const button =
+            card.querySelector(".open-button");
 
 
-/* =========================================
-   UNLOCK EVERYTHING
-========================================= */
+        button.addEventListener("click", () => {
 
-function unlockAll() {
+            if (
+                card.classList.contains("locked")
+            ) {
 
-    document.querySelectorAll(".memory-card")
-    .forEach(card => {
+                return;
 
-        card.classList.remove("locked");
+            }
 
-        card.classList.add("unlocked");
 
-        card.querySelector(".lock-icon")
-            .textContent = "🔓";
+            const memory =
+                memories[index];
 
-        card.querySelector(".unlock-text")
-            .textContent = "MEMORY UNLOCKED";
 
-        card.querySelector(".open-button")
-            .disabled = false;
+            createPasswordInterface(memory);
+
+        });
 
     });
-
-}
