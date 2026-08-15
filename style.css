@@ -900,3 +900,208 @@ body::before {
     }
 
 }
+
+/* ========================================
+   PASSWORD / CLUE
+======================================== */
+
+.password-lock {
+
+    font-size: 60px;
+
+    margin: 20px 0;
+
+    animation: lockFloat 2s ease-in-out infinite;
+
+}
+
+@keyframes lockFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+}
+
+.password-intro {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.clue-box {
+
+    border: 1px solid rgba(216,183,122,.25);
+
+    background: rgba(216,183,122,.04);
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+}
+
+.clue-box span {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+
+}
+
+.clue-box p {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+}
+
+
+.password-input {
+
+    width: 100%;
+
+    padding: 16px;
+
+    background: rgba(255,255,255,.04);
+
+    border: 1px solid rgba(216,183,122,.3);
+
+    color: white;
+
+    text-align: center;
+
+    font-family: "Montserrat", sans-serif;
+
+    outline: none;
+
+    transition: .3s;
+
+}
+
+.password-input:focus {
+
+    border-color: var(--gold);
+
+    box-shadow: 0 0 20px rgba(216,183,122,.08);
+
+}
+
+
+.unlock-button {
+
+    width: 100%;
+
+    padding: 16px;
+
+    margin-top: 12px;
+
+    border: 1px solid var(--gold);
+
+    background: var(--gold);
+
+    color: #08070b;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.unlock-button:hover {
+
+    background: var(--gold-light);
+
+}
+
+
+.wrong-answer {
+
+    min-height: 25px;
+
+    margin-top: 15px;
+
+    color: #d98f8f;
+
+    font-size: 11px;
+
+}
+
+
+.password-input.wrong {
+
+    animation: shake .4s;
+
+    border-color: #d98f8f;
+
+}
+
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+
+}
+
+
+.success-symbol {
+
+    font-size: 50px;
+
+    margin: 20px 0;
+
+    animation: unlockSuccess .8s ease;
+
+}
+
+@keyframes unlockSuccess {
+
+    0% {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
