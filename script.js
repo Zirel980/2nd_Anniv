@@ -18,7 +18,7 @@ const memories = [
 
         title: "Where It All Began",
 
-        image: "assets/memory1.jpg",
+        image: "assets/memory1.jpeg",
 
         clue: "What Roblox game did you send to me; that started everything?",
 
